@@ -1,0 +1,1 @@
+# Skillmea kurz od Yablka,  JS a ES6
