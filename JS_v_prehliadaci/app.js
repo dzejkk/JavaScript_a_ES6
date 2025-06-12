@@ -1,6 +1,6 @@
 "use strict";
 
-const img = document.querySelectorAll(".contianer article img");
+const img = document.querySelectorAll(".container article img");
 const myImgArray = Array.from(img); // parsing nodelist to array
 
 const SCORES_KEY = "imageScore";
