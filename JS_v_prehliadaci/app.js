@@ -21,12 +21,39 @@ let imageScore = loadFromLocalStorage();
 const hoverEvents = ["mouseover", "mouseout"];
 
 //main function
+// myImgArray.forEach((img, index) => {
+//   let imageID = `image_${index}`;
+
+//   if (!(imageID in imageScore)) {
+//     imageScore[imageID] = 0;
+//   }
+//   let scoreElement = img.nextElementSibling;
+//   scoreElement.textContent = imageScore[imageID];
+
+//   function makeItBigger() {
+//     img.classList.toggle("emphasize");
+//   }
+
+//   img.addEventListener("click", () => {
+//     imageScore[imageID]++;
+//     saveToLocalStorage(imageScore);
+//     scoreElement.textContent = imageScore[imageID];
+//   });
+
+//   hoverEvents.forEach((eventType) => {
+//     img.addEventListener(eventType, makeItBigger);
+//   });
+// });
+
+/* DIFFERENT APROACH WITH OBJECT MAPPING TO PACK EVENT LISTENERS */
+
 myImgArray.forEach((img, index) => {
-  let imageID = `image_${index}`;
+  const imageID = `image_${index}`;
 
   if (!(imageID in imageScore)) {
     imageScore[imageID] = 0;
   }
+
   let scoreElement = img.nextElementSibling;
   scoreElement.textContent = imageScore[imageID];
 
@@ -34,14 +61,22 @@ myImgArray.forEach((img, index) => {
     img.classList.toggle("emphasize");
   }
 
-  img.addEventListener("click", () => {
+  function handleMouseClick() {
     imageScore[imageID]++;
     saveToLocalStorage(imageScore);
     scoreElement.textContent = imageScore[imageID];
-  });
+  }
 
-  hoverEvents.forEach((eventType) => {
-    img.addEventListener(eventType, makeItBigger);
+  //Event mapping
+
+  const eventHandlers = {
+    click: handleMouseClick,
+    mouseover: makeItBigger,
+    mouseout: makeItBigger,
+  };
+
+  Object.entries(eventHandlers).forEach(([eventType, handler]) => {
+    img.addEventListener(eventType, handler);
   });
 });
 
