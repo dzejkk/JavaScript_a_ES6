@@ -15,7 +15,6 @@ let cenaProduktu = 600;
 
 function how_much(quantity, price) {
   const app = document.getElementById("app");
-
   const display = document.createElement("p");
 
   display.textContent = `kupil si ${quantity} predmetov za ${
