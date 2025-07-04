@@ -56,13 +56,41 @@ textarea {
   border-radius: 12px;
   border-color: var(--color-primary);
   padding: 0.5rem;
+  color: var(--color-base-content);
 }
 
 .underlay {
-  stroke: var(--color-base-300);
+  color: var(--color-base-300);
+}
+.progress-warn {
+  color: var(--color-accent);
+  stroke-width: 4px;
 }
 
-.progress-warn {
-  stroke: var(--color-accent);
-  stroke-width: 4px;
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  padding-block-end: 0.5rem;
+}
+
+/*  careful of  cascade */
+
+.warning {
+  color: var(--color-warning);
+}
+
+.danger {
+  color: var(--color-secondary);
+}
+
+/*  careful of  cascade */
+
+.counter {
+  display: block;
+  font-size: 0.75rem;
+  text-align: left;
+  transform: translate(315px, -20px);
 }
