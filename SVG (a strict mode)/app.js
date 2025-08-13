@@ -71,11 +71,16 @@ let Orb = {
     }
   },
   handleColors: function (stringLength) {
+    const { progress } = Orb.elements;
+    const { dangerZone, warningZone, tweetLength } = Orb.config;
+
     progress.classList.toggle("danger", stringLength > dangerZone);
     progress.classList.toggle("warning", stringLength >= warningZone);
     progress.classList.toggle("tragedy", stringLength >= tweetLength);
   },
   handleCounter: function (stringLength) {
+    const { counter } = Orb.elements;
+    const { tweetLength } = Orb.config;
     counter.textContent = tweetLength - stringLength;
   },
 };
