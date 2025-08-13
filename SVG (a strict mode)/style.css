@@ -65,6 +65,12 @@ textarea {
 .progress-warn {
   color: var(--color-accent);
   stroke-width: 4px;
+  transition: 0.2s stroke-width ease-in-out;
+}
+
+.tragedy {
+  stroke-width: 6px;
+  animation: blink 0.4s ease-in-out;
 }
 
 form {
@@ -93,4 +99,18 @@ label {
   font-size: 0.75rem;
   text-align: left;
   transform: translate(315px, -20px);
+}
+
+/*animations*/
+
+@keyframes blink {
+  0% {
+    stroke-width: 6px;
+  }
+  10% {
+    stroke-width: 4px;
+  }
+  100% {
+    stroke-width: 6px;
+  }
 }
