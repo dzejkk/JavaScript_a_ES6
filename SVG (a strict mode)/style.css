@@ -105,7 +105,7 @@ label {
 
 @keyframes blink {
   0% {
-    stroke-width: 6px;
+    stroke-width: 1px;
   }
   10% {
     stroke-width: 4px;
