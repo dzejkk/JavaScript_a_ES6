@@ -70,6 +70,8 @@ textarea {
   box-sizing: border-box;
   margin: 0;
   overflow: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .underlay {
@@ -160,6 +162,7 @@ label {
   color: transparent;
   z-index: 1;
   box-sizing: border-box;
+  margin: 0;
 }
 
 .excess-text {

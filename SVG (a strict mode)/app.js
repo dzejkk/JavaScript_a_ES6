@@ -103,6 +103,8 @@ let Orb = {
   },
 };
 
+/*Calling  with event listeners */
+
 const { pathLength } = Orb.config;
 
 Orb.elements.progress.style.strokeDasharray = pathLength + "px";
@@ -115,4 +117,15 @@ Orb.elements.textarea.addEventListener("input", (event) => {
   Orb.handleProgress(stringLength);
   Orb.handleColors(stringLength, event, text);
   Orb.handleCounter(stringLength);
+});
+
+/* to graphics stay in sync when big chunk of text is pasted */
+Orb.elements.textarea.addEventListener("scroll", function () {
+  /* this  keyword explain */
+  console.log("this is:", this);
+  console.log("Same as textarea?", this === Orb.elements.textarea);
+  /*///////////////////////////////*/
+
+  Orb.elements.overlay.scrollTop = this.scrollTop;
+  Orb.elements.overlay.scrollLeft = this.scrollLeft;
 });
