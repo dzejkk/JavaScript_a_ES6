@@ -33,10 +33,12 @@ body {
   display: grid;
   place-content: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100dvh;
 }
 
 section {
   background-color: var(--color-base-100);
+  min-height: 100%;
 }
 
 circle {
@@ -51,12 +53,23 @@ svg {
 }
 
 textarea {
-  width: 20rem;
-  min-height: 10rem;
+  width: 100%;
+  min-height: 220px;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
   border-radius: 12px;
-  border-color: var(--color-primary);
-  padding: 0.5rem;
-  color: var(--color-base-content);
+  resize: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+  margin: 0;
+  overflow: hidden;
 }
 
 .underlay {
@@ -76,6 +89,8 @@ textarea {
 form {
   display: flex;
   flex-direction: column;
+  height: 40rem;
+  width: 25rem;
 }
 
 label {
@@ -98,7 +113,7 @@ label {
   display: block;
   font-size: 0.75rem;
   text-align: left;
-  transform: translate(315px, -20px);
+  transform: translate(355px, -20px);
 }
 
 /*animations*/
@@ -113,4 +128,41 @@ label {
   100% {
     stroke-width: 6px;
   }
+}
+
+/* overlay styles */
+
+.textarea-container {
+  position: relative;
+  width: 100%;
+}
+
+.text-overlay {
+  position: absolute;
+  background-color: transparent;
+  padding: 12px;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  pointer-events: none;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  color: transparent;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  background: transparent;
+  color: transparent;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.excess-text {
+  background-color: #fee2e2;
+  color: #dc2626;
 }

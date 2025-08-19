@@ -49,6 +49,7 @@ let Orb = {
     progress: document.querySelector(".progress-warn"),
     textarea: document.querySelector("textarea"),
     counter: document.querySelector(".counter"),
+    overlay: document.querySelector(".text-overlay"),
   },
 
   config: {
@@ -72,8 +73,8 @@ let Orb = {
       progress.style.strokeDashoffset = "0px"; // added for pasting values to work
     }
   },
-  handleColors: function (stringLength, event) {
-    const { progress } = Orb.elements;
+  handleColors: function (stringLength, event, text) {
+    const { progress, overlay } = Orb.elements;
     const { dangerZone, warningZone, tweetLength } = Orb.config;
 
     if (event.inputType === "insertText") {
@@ -82,6 +83,17 @@ let Orb = {
       progress.classList.toggle("tragedy", stringLength > tweetLength);
     } else {
       progress.classList.remove("danger", "warning", "tragedy");
+    }
+
+    console.log(tweetLength);
+
+    if (stringLength > tweetLength) {
+      const normalText = text.slice(0, tweetLength);
+      const excessText = text.slice(tweetLength);
+      overlay.innerHTML =
+        normalText + '<span class="excess-text">' + excessText + "</span>";
+    } else {
+      overlay.innerHTML = "";
     }
   },
   handleCounter: function (stringLength) {
@@ -99,7 +111,8 @@ Orb.elements.progress.style.strokeDashoffset = pathLength + "px";
 Orb.elements.textarea.addEventListener("input", (event) => {
   console.log(event);
   let stringLength = Orb.elements.textarea.value.length;
+  const text = Orb.elements.textarea.value;
   Orb.handleProgress(stringLength);
-  Orb.handleColors(stringLength, event);
+  Orb.handleColors(stringLength, event, text);
   Orb.handleCounter(stringLength);
 });
